@@ -22,6 +22,11 @@ public class EllipsisLabel: UILabel {
         }
     }
     
+    public override var font: UIFont! {
+        didSet {
+            self.updateText()
+        }
+    }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
