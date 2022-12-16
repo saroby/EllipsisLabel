@@ -94,6 +94,7 @@ public class EllipsisLabel: UILabel {
             
             modifiedText = originText
             modifiedText.replaceSubrange(ellipsisLeftIndex...ellipsisRightIndex, with: self.ellipsis)
+            modifiedText.replaceSubrange(ellipsisLeftIndex..<ellipsisRightIndex, with: self.ellipsis)
         }
         
         super.text = modifiedText
