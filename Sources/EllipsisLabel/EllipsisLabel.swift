@@ -59,7 +59,7 @@ public class EllipsisLabel: UILabel {
         self.updateText()
     }
     
-    private func updateText() {
+    public func updateText() {
         guard let replaceText else {
             super.text = originText
             return
