@@ -1,5 +1,3 @@
-#if canImport(CocoaChain)
-
 import CocoaChain
 import Foundation
 
@@ -12,5 +10,3 @@ extension Chain where T: EllipsisLabel {
         return self
     }
 }
-
-#endif

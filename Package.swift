@@ -10,14 +10,12 @@ let package = Package(
         .library(name: "EllipsisLabel", targets: ["EllipsisLabel"]),
     ],
     dependencies: [
-//        .package(url: "https://github.com/saroby/CocoaChain", branch: "main"),
+        .package(url: "https://github.com/saroby/CocoaChain", branch: "main"),
     ],
     targets: [
         .target(
             name: "EllipsisLabel",
-            dependencies: [
-//                "CocoaChain"
-            ],
+            dependencies: ["CocoaChain"],
             cSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE")]
         ),
     ],
