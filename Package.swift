@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "EllipsisLabel",
-    platforms: [.iOS(.v12)],
+    platforms: [.iOS(.v14)],
     products: [
         .library(name: "EllipsisLabel", targets: ["EllipsisLabel"]),
     ],
