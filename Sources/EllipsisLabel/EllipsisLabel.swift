@@ -83,22 +83,16 @@ public class EllipsisLabel: UILabel {
               let ellipsisLeftIndex = originText.index(anchorIndex, offsetBy: ellipsisLeftOffset - 1, limitedBy: originTextStartIndex),
               ellipsisLeftIndex >= originTextStartIndex {
             ellipsisLeftOffset -= 1
-            
-            modifiedText = originText
-            modifiedText.replaceSubrange(ellipsisLeftIndex..<anchorIndex, with: self.ellipsis)
+            modifiedText = originText.replacedSubrange(ellipsisLeftIndex..<anchorIndex, with: self.ellipsis)
         }
         
-        let originTextEndIndex = originText.endIndex
+        let originTextEndIndex = originText.index(before: originText.endIndex)
         var ellipsisRightOffset = 0
-        let ellipsisLeftIndex = originText.index(anchorIndex, offsetBy: ellipsisLeftOffset)
-        
         while self.isTruncated(modifiedText),
               let ellipsisRightIndex = originText.index(anchorIndex, offsetBy: ellipsisRightOffset + 1, limitedBy: originTextEndIndex),
               ellipsisRightIndex <= originTextEndIndex {
             ellipsisRightOffset += 1
-            
-            modifiedText = originText
-            modifiedText.replaceSubrange(ellipsisLeftIndex..<ellipsisRightIndex, with: self.ellipsis)
+            modifiedText = originText.replacedSubrange(originText.index(anchorIndex, offsetBy: ellipsisLeftOffset)..<ellipsisRightIndex, with: self.ellipsis)
         }
         
         super.text = modifiedText
@@ -118,5 +112,14 @@ public class EllipsisLabel: UILabel {
             .size
         
         return labelTextSize.height > bounds.size.height
+    }
+}
+
+
+extension String {
+    func replacedSubrange(_ bounds: Range<String.Index>, with newElements: String) -> String {
+        var newString = self
+        newString.replaceSubrange(bounds, with: newElements)
+        return newString
     }
 }
